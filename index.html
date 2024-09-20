@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electiva 2 - DevOps y CI/CD</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        h1 {
+            color: #3498db;
+            font-size: 2.5rem;
+        }
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .info {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Electiva 2: DevOps y CI/CD</h1>
+        <p>Bienvenido a la página de prueba para la asignatura Electiva 2 en el ITLA. Aquí aprenderás sobre la importancia de DevOps y CI/CD.</p>
+        <button onclick="mostrarInformacion()">¿Qué es DevOps?</button>
+        <div class="info" id="info">
+            <h2>¿Qué es DevOps?</h2>
+            <p>DevOps es un conjunto de prácticas que combinan el desarrollo de software (Dev) y las operaciones de TI (Ops). Su objetivo es acortar el ciclo de vida del desarrollo y ofrecer entregas continuas con alta calidad.</p>
+        </div>
+    </div>
+
+    <script>
+        function mostrarInformacion() {
+            const info = document.getElementById("info");
+            if (info.style.display === "none" || info.style.display === "") {
+                info.style.display = "block";
+            } else {
+                info.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
