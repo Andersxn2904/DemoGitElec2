@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electiva 2 - DevOps y CI/CD</title>
+    <title>Adivina el Número - Electiva 2</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #2c3e50;
+            color: #ecf0f1;
             margin: 0;
             padding: 0;
             display: flex;
@@ -16,64 +16,75 @@
             align-items: center;
             height: 100vh;
         }
-        .container {
-            background-color: #fff;
+        .game-container {
+            background-color: #34495e;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             width: 90%;
-            max-width: 600px;
-            padding: 20px;
+            max-width: 400px;
+            padding: 30px;
             text-align: center;
-            transition: transform 0.3s ease-in-out;
-        }
-        .container:hover {
-            transform: scale(1.05);
         }
         h1 {
-            color: #3498db;
-            font-size: 2.5rem;
+            color: #e74c3c;
+            font-size: 2rem;
         }
-        p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+        input {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
         }
         button {
-            background-color: #3498db;
+            background-color: #e74c3c;
             color: #fff;
             border: none;
             padding: 10px 20px;
             font-size: 1rem;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
             transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #2980b9;
+            background-color: #c0392b;
         }
-        .info {
-            display: none;
+        .message {
             margin-top: 20px;
+            font-size: 1.2rem;
+            color: #f1c40f;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Electiva 2: DevOps y CI/CD</h1>
-        <p>Bienvenido a la página de prueba para la asignatura Electiva 2 en el ITLA. Aquí aprenderás sobre la importancia de DevOps y CI/CD.</p>
-        <button onclick="mostrarInformacion()">¿Qué es DevOps?</button>
-        <div class="info" id="info">
-            <h2>¿Qué es DevOps?</h2>
-            <p>DevOps es un conjunto de prácticas que combinan el desarrollo de software (Dev) y las operaciones de TI (Ops). Su objetivo es acortar el ciclo de vida del desarrollo y ofrecer entregas continuas con alta calidad.</p>
-        </div>
+    <div class="game-container">
+        <h1>Adivina el Número</h1>
+        <p>Intenta adivinar el número entre 1 y 100.</p>
+        <input type="number" id="userGuess" placeholder="Escribe tu número" min="1" max="100">
+        <button onclick="checkGuess()">Adivinar</button>
+        <div class="message" id="message"></div>
     </div>
 
     <script>
-        function mostrarInformacion() {
-            const info = document.getElementById("info");
-            if (info.style.display === "none" || info.style.display === "") {
-                info.style.display = "block";
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = document.getElementById('userGuess').value;
+            const message = document.getElementById('message');
+            attempts++;
+
+            if (!userGuess) {
+                message.textContent = "Por favor, introduce un número.";
+            } else if (userGuess < randomNumber) {
+                message.textContent = "Demasiado bajo. Intenta nuevamente.";
+            } else if (userGuess > randomNumber) {
+                message.textContent = "Demasiado alto. Intenta nuevamente.";
             } else {
-                info.style.display = "none";
+                message.textContent = `¡Felicidades! Adivinaste el número ${randomNumber} en ${attempts} intentos.`;
             }
         }
     </script>
